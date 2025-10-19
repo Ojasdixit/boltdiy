@@ -18,6 +18,13 @@ export default defineConfig((config) => {
     },
     build: {
       target: 'esnext',
+      rollupOptions: {
+        external: [
+          '@supabase/supabase-js',
+          '@supabase/auth-ui-react',
+          '@supabase/auth-ui-svelte'
+        ],
+      },
     },
     plugins: [
       nodePolyfills({
