@@ -9,11 +9,11 @@ import { useEffect } from 'react';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import { ClientOnly } from 'remix-utils/client-only';
-
-import reactToastifyStyles from 'react-toastify/dist/ReactToastify.css?url';
+import { AuthProvider } from '~/components/auth/AuthProvider';
 import globalStyles from './styles/index.scss?url';
 import xtermStyles from '@xterm/xterm/css/xterm.css?url';
 
+import reactToastifyStyles from 'react-toastify/dist/ReactToastify.css?url';
 import 'virtual:uno.css';
 
 export const links: LinksFunction = () => [
@@ -114,8 +114,10 @@ export default function App() {
   }, []);
 
   return (
-    <Layout>
-      <Outlet />
-    </Layout>
+    <AuthProvider>
+      <Layout>
+        <Outlet />
+      </Layout>
+    </AuthProvider>
   );
 }
